@@ -1,154 +1,170 @@
-/* Общи настройки */
-body {
-    font-family: 'Roboto', Arial, sans-serif;
-    line-height: 1.6;
-    margin: 0;
+* {
     padding: 0;
-    background-color: #f4f4f9;
-    color: #333;
-}
-
-header {
-    display: flex;
-    align-items: center;
-    padding: 50px 60px 60px 50px;
-    background: linear-gradient(135deg, #001f54 40%, #ff0000 150%);
-    color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.profile-pic-container {
-    flex: 0 0 auto;
-    margin-right: 20px;
-}
-
-.profile-pic {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 3px solid #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-    padding: 5px 5px 5px 5px;
-}
-
-.profile-info-container {
-    flex: 1;
-    text-align: left;
-}
-
-.profile-name h1 {
-    font-size: 2.5rem;
     margin: 0;
-    color: #fff;
 }
 
-.profile-title h3 {
-    font-size: 1.2rem;
-    margin: 5px 0;
-    color: #e1e8eb;
+html {
+    box-sizing: border-box;
 }
 
-.contact-info,
-.social-links {
-    margin: 10px 0;
-    font-size: 0.9rem;
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 
-.contact-info a,
-.social-links a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-    margin: 0 5px;
+html {
+    font: 16px/1.5 Verdana, sans-serif;
 }
 
-.contact-info a:hover,
-.social-links a:hover {
-    text-decoration: underline;
-}
-
-main {
-    padding: 30px 20px;
-    max-width: 900px;
-    margin: 20px auto;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-}
-
-section {
-    margin-bottom: 20px;
-    padding: 20px;
-    background-color: #f9f9f9;
-    border-left: 4px solid #001f54;
-    border-radius: 4px;
-}
-
-section h2 {
-    font-size: 1.8rem;
-    margin-bottom: 10px;
-    color: #001f54;
-    border-bottom: 2px solid #001f54;
-    padding-bottom: 5px;
-}
-
-section p {
-    margin: 10px 0;
-    font-size: 1rem;
-}
-
-section ul {
-    margin: 10px 0;
-    padding-left: 20px;
-    list-style-type: disc;
-}
-
-section ul li {
-    margin-bottom: 8px;
-    font-size: 1rem;
+body, html {
+    font: inherit;
+    background-color: #ffdede;
 }
 
 a {
-    color: #001f54;
     text-decoration: none;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    width: 1200px;
+    justify-content: center;
+    margin: 1em auto 0;
+    box-shadow: 0 0 1em 0 rgb(0, 0, 0, 0.3);
+    border-radius: 0.5em;
+    padding: 2em;
+}
+
+.name {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 15em;
+    margin-bottom: 1em;
+}
+
+#name-2 {
+    color: #449399;
     font-weight: bold;
 }
 
-a:hover {
-    text-decoration: underline;
+.first-title {
+    display: flex;
+    padding-top: 1em;
+    padding-left: 15em;
+    background-color: #313c4e;
+    color: white;
+    height: 8em;
+    position: relative;
 }
 
-/* Отзивчив дизайн */
-@media (max-width: 768px) {
-    header {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-    }
+.first-title::before {
+    content: '';
+    position: absolute;
+    left: 2.5%;
+    top: -10%;
+    transform: translateY(-50%);
+    background-color: red; /* Примерен цвят за тест */
+    padding: 5.5em;
+    border-radius: 50%;
+    background-image: url('images/pic.jpg'); /* Замени със своя път към снимката */
+    background-size: cover; /* За да запълни напълно */
+    background-position: 70% 15%;
+    border: 5px solid #313c4e;
+    z-index: 1;
+}
 
-    .profile-pic-container {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-
-    .profile-info-container {
-        text-align: center;
-    }
-
-    main {
-        padding: 20px;
-    }
-
-    section h2 {
-        font-size: 1.5rem;
-    }
-
-    section ul li {
-        font-size: 0.9rem;
-    }
+.first-title::after {
+    content: '';
+    position: absolute;
+    left: 2.75%;
+    top: -9%;
+    padding: 5.4em;
+    transform: translateY(-50%);
+    border-radius: 50%;
+    border: 3px solid #449399; /* Втори бордър (външен) */
+    z-index: 2;
 }
 
 
-img.profile-pic{
-    margin-left: 350px;
+.second-title {
+    display: flex;
+    height: 9em;
+    gap: 15em;
+    line-height: 1.5;
+    background-color: #449399;
+    color: white;
+    padding: 1em;
 }
+
+.second-title .left-side {
+    margin-left: 1.5em;
+}
+
+.first-title {
+    border-top-left-radius: 0.5em;
+    border-top-right-radius: 0.5em;
+}
+
+.second-title {
+    border-bottom-right-radius: 0.5em;
+    border-bottom-left-radius: 0.5em;
+}
+
+.second-title .left-side,
+.second-title .right-side {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Разстояние между редовете */
+}
+
+.left-side p, .right-side p {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 1em;
+}
+
+#ls-1::before,
+#ls-2::before,
+#ls-3::before,
+#rs-1::before,
+#rs-2::before,
+#rs-3::before {
+    content: '';
+    display: inline-block;
+    width: 2em;
+    height: 2em;
+    background-size: cover;
+    margin-right: 8px;
+}
+
+#ls-1::before {
+    background-image: url('images/icons8-email-48.png');
+}
+
+#ls-2::before {
+    background-image: url('images/icons8-address-64.png');
+}
+
+#ls-3::before {
+    background-image: url('images/icons8-linkedin-100.png');
+}
+
+#rs-1::before {
+    background-image: url('images/icons8-phone-100.png');
+    color: white;
+}
+
+#rs-2::before {
+    background-image: url('images/icons8-website-48.png');
+}
+
+#rs-3::before {
+    background-image: url('images/icons8-github-64.png');
+}
+
+
