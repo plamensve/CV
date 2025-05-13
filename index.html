@@ -46,36 +46,44 @@
             <details class="education">
                 <summary class="courses-info">Courses</summary>
                 <ul class="courses-title">
-                    <li>Django Advanced</li>
-                    <li>Django Basics</li>
-                    <li>Python ORM</li>
-                    <li>PostgreSQL</li>
-                    <li>Python OOP</li>
-                    <li>Python Advanced</li>
-                    <li>HTML & CSS</li>
-                    <li>JS Front-End</li>
-                    <li>Software Engineering and DevOps</li>
-                    <li>Containers and Cloud</li>
+                    <li data-image="images/certifications/django-advanced.jpg">Django Advanced</li>
+                    <li data-image="images/certifications/django-basics.jpg">Django Basics</li>
+                    <li data-image="images/certifications/orm.jpg">Python ORM</li>
+                    <li data-image="images/certifications/postgresql.jpg">PostgreSQL</li>
+                    <li data-image="images/certifications/oop.jpg">Python OOP</li>
+                    <li data-image="images/certifications/python-advanced.jpg">Python Advanced</li>
+                    <li data-image="images/certifications/html.jpg">HTML & CSS</li>
+                    <li data-image="images/certifications/js-front-end.jpg">JS Front-End</li>
+                    <li data-image="certificates/software-devops.jpg">Software Engineering and DevOps</li>
+                    <li data-image="certificates/cloud.jpg">Containers and Cloud</li>
                 </ul>
             </details>
+            <!-- Място за показване на снимката -->
+            <div id="certificate-preview">
+                <div class="certificate-modal">
+                    <button id="close-preview">✖</button>
+                    <img id="certificate-image" src="" alt="Certificate">
+                </div>
+            </div>
         </div>
 
         <div class="s-2">
-             <div class="head-education">
+            <div class="head-education">
                 <h2>AI and Machine Learning</h2>
                 <h3>Software University</h3>
             </div>
             <details class="education">
                 <summary class="courses-info">Courses</summary>
                 <ul class="courses-title">
-                    <li>Math Concepts for Developers</li>
-                    <li>Data Science</li>
-                    <li>Machine Learning</li>
-                    <li>Deep Learning</li>
+                    <li data-image="images/certifications/">Math Concepts for Developers</li>
+                    <li data-image="images/certifications/">Data Science</li>
+                    <li data-image="images/certifications/">Machine Learning</li>
+                    <li data-image="images/certifications/">Deep Learning</li>
                 </ul>
             </details>
         </div>
     </section>
 </div>
+<script src="scripts/cert.js"></script>
 </body>
 </html>
