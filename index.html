@@ -7,7 +7,9 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div class="container">
+<div class="container">
+
+    <section class="head">
         <div class="name">
             <div class="picture">
                 <img src="images/pic.jpg" alt="" style="width: 150px; border-radius: 10%">
@@ -21,9 +23,10 @@
         </div>
         <div class="second-title">
             <div class="left-side">
-                <p id="ls-1">svetoslavov.plamen@gmail.com</p>
+                <p id="ls-1">svetoslavov.dev@gmail.com</p>
                 <p id="ls-2">Byala, Ruse, Bulgaria</p>
-                <p id="ls-3"><a href="https://www.linkedin.com/in/plamen-svetoslavov/" target="_blank">https://www.linkedin.com/in/plamen-svetoslavov/</a></p>
+                <p id="ls-3"><a href="https://www.linkedin.com/in/plamen-svetoslavov/" target="_blank">https://www.linkedin.com/in/plamen-svetoslavov/</a>
+                </p>
             </div>
             <div class="right-side">
                 <p id="rs-1">(+359) 88 3 427 273</p>
@@ -31,28 +34,48 @@
                 <p id="rs-3"><a href="https://github.com/plamensve" target="_blank">github.com/plamensve</a></p>
             </div>
         </div>
+    </section>
 
-        <br>
-        <br>
-        <hr>
-        <br>
+    <section class="education-s">
 
-        <div class="head-education">
-            <h2>Software engineer with Python</h2>
-            <h3>Software University</h3>
+        <div class="s-1">
+            <div class="head-education">
+                <h2>Software engineer with Python</h2>
+                <h3>Software University</h3>
+            </div>
+            <details class="education">
+                <summary class="courses-info">Courses</summary>
+                <ul class="courses-title">
+                    <li>Django Advanced</li>
+                    <li>Django Basics</li>
+                    <li>Python ORM</li>
+                    <li>PostgreSQL</li>
+                    <li>Python OOP</li>
+                    <li>Python Advanced</li>
+                    <li>HTML & CSS</li>
+                    <li>JS Front-End</li>
+                    <li>Software Engineering and DevOps</li>
+                    <li>Containers and Cloud</li>
+                </ul>
+            </details>
         </div>
-        <details class="education" open>
-            <summary class="courses-info">Courses</summary>
-            <ul class="courses-title">
-                <li>Django Advanced</li>
-                <li>Django Basics</li>
-                <li>Python ORM</li>
-                <li>PostgreSQL</li>
-                <li>Python OOP</li>
-                <li>Python Advanced</li>
-                <li>HTML & CSS</li>
-            </ul>
-        </details>
-    </div>
+
+        <div class="s-2">
+             <div class="head-education">
+                <h2>AI and Machine Learning</h2>
+                <h3>Software University</h3>
+            </div>
+            <details class="education">
+                <summary class="courses-info">Courses</summary>
+                <ul class="courses-title">
+                    <li>Math Concepts for Developers</li>
+                    <li>Data Science</li>
+                    <li>Machine Learning</li>
+                    <li>Deep Learning</li>
+                </ul>
+            </details>
+        </div>
+    </section>
+</div>
 </body>
 </html>

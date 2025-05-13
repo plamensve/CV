@@ -28,6 +28,7 @@ hr {
     border-radius: 0.5em;
     padding: 2em;
     max-width: 96%;
+    gap: 2em;
 }
 
 .name {
@@ -193,4 +194,61 @@ hr {
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.1);
     cursor: pointer;
 }
+
+.education-s {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 10em;
+}
+
+.courses-title li {
+  padding: 12px 24px;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.05rem;
+  font-weight: bold;
+  color: black;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(0, 255, 255, 0.3);
+  border-radius: 12px;
+  backdrop-filter: blur(10px);
+  box-shadow: inset 0 0 8px rgba(0, 255, 255, 0.2);
+  transition: all 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.courses-title li:hover {
+  background: rgba(0, 255, 255, 0.12);
+  box-shadow:
+    inset 0 0 8px #0ff,
+    inset 0 0 16px #0ff,
+    inset 0 0 24px #0ff;
+  transform: translateY(-2px) scale(1.02);
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
