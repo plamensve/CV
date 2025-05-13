@@ -238,24 +238,33 @@ hr {
   display: none;
   justify-content: center;
   align-items: center;
+  padding-left: 36px;  /* Падинг отляво */
+  padding-right: 36px; /* Падинг отдясно */
+  box-sizing: border-box;
   z-index: 999;
 }
+
 
 .certificate-modal {
   position: relative;
   background: #313c4e;
-  padding: 20px;
+  padding: 20px 16px; /* top-bottom: 20px, left-right: 16px */
   border-radius: 12px;
   box-shadow: 0 0 30px rgba(0, 255, 255, 0.5);
   animation: fadeIn 0.3s ease-in-out;
+  max-width: 95vw;
+  box-sizing: border-box;
 }
 
+
 #certificate-image {
-  max-width: 90vw;
+  width: 100%;
   max-height: 80vh;
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 255, 255, 0.4);
+  object-fit: contain;
 }
+
 
 #close-preview {
   position: absolute;
