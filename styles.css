@@ -197,6 +197,7 @@ hr {
 
 .education-s {
     display: flex;
+    flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
     gap: 10em;
