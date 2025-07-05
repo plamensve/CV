@@ -307,7 +307,6 @@ html, body {
     gap: 2.5rem;
     list-style: none;
     padding: 0;
-    margin: 0;
     transition: max-height 0.3s, opacity 0.3s;
 }
 .cv-nav a {
@@ -757,7 +756,7 @@ main {
     .cv-nav ul.nav-links li {
         text-align: center;
         width: 100%;
-        padding: 1rem 0.8rem;
+        padding: 2.5rem 0.8rem;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -834,7 +833,7 @@ main {
         gap: 0.15rem;
     }
     .cv-nav ul.nav-links li {
-        padding: 0.8rem 0.6rem;
+        padding: 2rem 0.6rem;
     }
     .cv-nav ul.nav-links a {
         font-size: 1rem;
@@ -883,7 +882,7 @@ main {
         gap: 0.1rem;
     }
     .cv-nav ul.nav-links li {
-        padding: 0.6rem 0.5rem;
+        padding: 1.5rem 0.5rem;
     }
     .cv-nav ul.nav-links a {
         font-size: 0.9rem;
