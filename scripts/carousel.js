@@ -155,20 +155,5 @@
         }
     });
 
-    // --- Scroll-to-top button ---
-    document.addEventListener('DOMContentLoaded', function() {
-        const scrollBtn = document.querySelector('.scroll-top-btn');
-        if (!scrollBtn) return;
-        function toggleScrollBtn() {
-            if (window.scrollY > 200) {
-                scrollBtn.classList.add('show');
-            } else {
-                scrollBtn.classList.remove('show');
-            }
-        }
-        window.addEventListener('scroll', toggleScrollBtn);
-        scrollBtn.addEventListener('click', function() {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    });
+
 })(); 
