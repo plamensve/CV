@@ -476,56 +476,127 @@ main {
     box-shadow: none;
 }
 
-.courses-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    gap: 1.2rem;
+.courses-carousel {
+    overflow-x: auto;
+    overflow-y: visible;
+    padding-bottom: 18px;
     margin-top: 1.2rem;
+    position: relative;
+    scrollbar-width: thin;
+    scrollbar-color: var(--accent) var(--bg-secondary);
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
 }
-.course-card {
-    background: rgba(24,26,32,0.85);
-    border-radius: 14px;
-    border: 2px solid var(--accent);
-    box-shadow: 0 0 8px 0 var(--accent2), 0 0 2px 0 var(--accent);
-    transition: transform 0.18s, box-shadow 0.18s;
-    overflow: hidden;
-    cursor: pointer;
+.courses-carousel::-webkit-scrollbar {
+    height: 12px;
+    background: var(--bg-secondary);
+    border-radius: 8px;
+}
+.courses-carousel::-webkit-scrollbar-thumb {
+    background: linear-gradient(120deg, var(--accent), var(--accent2));
+    border-radius: 8px;
+    box-shadow: 0 0 8px var(--accent2), 0 0 2px var(--accent);
+    border: 2px solid var(--bg-secondary);
+    transition: background 0.3s;
+}
+.courses-carousel::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(120deg, var(--accent2), var(--accent));
+}
+.courses-track {
+    display: flex;
+    gap: 1.2rem;
+    width: max-content;
+    min-width: 100%;
+    padding-bottom: 2px;
+    padding-top: 30px;
+}
+.courses-carousel .course-card {
+    min-width: 220px;
+    max-width: 240px;
+    flex: 0 0 220px;
+    margin-right: 0;
+    transition: transform 0.35s cubic-bezier(.4,2,.6,1), box-shadow 0.25s, filter 0.25s;
+    scroll-snap-align: center;
+    filter: blur(0.5px) brightness(0.95);
+    opacity: 0.85;
+    z-index: 1;
+    transform: scale(0.92) perspective(600px) rotateY(-8deg);
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 140px;
     padding: 0.7rem 0.5rem 0.8rem 0.5rem;
+    background: rgba(24,26,32,0.92);
+    border: 2.5px solid var(--accent);
+    box-shadow: none;
 }
-.course-card:hover {
+.courses-carousel .course-card.active {
+    filter: none;
+    opacity: 1;
+    z-index: 2;
     border-color: var(--accent2);
-    background: linear-gradient(120deg, rgba(0,255,231,0.10) 0%, rgba(255,0,234,0.10) 100%), rgba(24,26,32,0.95);
-    transform: translateY(-4px) scale(1.03);
-    transition: border-color 0.2s, background 0.2s, transform 0.2s;
-    cursor: pointer;
+    box-shadow: none;
+    transform: scale(1.08) perspective(600px) rotateY(0deg);
 }
-.course-img {
+.courses-carousel .course-card.prev,
+.courses-carousel .course-card.next {
+    filter: blur(0.2px) brightness(0.98);
+    opacity: 0.92;
+    z-index: 1;
+    transform: scale(0.97) perspective(600px) rotateY(8deg);
+}
+.courses-carousel .course-card:hover {
+    transform: scale(1.12) perspective(600px) rotateY(0deg);
+    border-color: var(--accent2);
+    box-shadow: none;
+    z-index: 3;
+    filter: none;
+    opacity: 1;
+}
+.courses-carousel .course-img {
     width: 100%;
-    max-width: 140px;
-    max-height: 80px;
+    max-width: 110px;
+    max-height: 60px;
     object-fit: cover;
     border-radius: 10px;
-    margin-bottom: 0.6rem;
+    margin-bottom: 0.5rem;
     display: block;
     border: none;
     box-shadow: none;
 }
-.course-title {
+.courses-carousel .course-title {
     font-family: var(--font-future);
     color: var(--accent);
     font-size: 1rem;
     text-align: center;
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.15rem;
     text-shadow: 0 0 4px var(--accent);
 }
-.course-org {
+.courses-carousel .course-org {
     color: var(--text-secondary);
     font-size: 0.85rem;
     text-align: center;
+}
+@media (max-width: 900px) {
+    .courses-carousel .course-card {
+        min-width: 170px;
+        max-width: 190px;
+        flex: 0 0 170px;
+    }
+    .courses-carousel .course-img {
+        max-width: 80px;
+        max-height: 44px;
+    }
+}
+@media (max-width: 700px) {
+    .courses-carousel .course-card {
+        min-width: 120px;
+        max-width: 140px;
+        flex: 0 0 120px;
+    }
+    .courses-carousel .course-img {
+        max-width: 54px;
+        max-height: 32px;
+    }
 }
 
 #personal-projects.cv-section:hover,
