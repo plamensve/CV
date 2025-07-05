@@ -299,21 +299,23 @@ html, body {
 .download-cv-btn {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.7rem;
     background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #000;
+    color: var(--accent);
     text-decoration: none;
-    padding: 0.8rem 1.5rem;
+    padding: 1.1rem 2.4rem;
     border-radius: var(--radius);
     font-family: var(--font-future);
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 16px rgba(0,255,231,0.3), 0 2px 8px rgba(255,0,234,0.3);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
+    font-weight: 700;
+    font-size: 1.18rem;
+    letter-spacing: 1.2px;
+    box-shadow: 0 6px 24px 0 var(--accent), 0 0 32px 0 var(--accent2);
+    transition: box-shadow 0.3s, transform 0.2s, outline 0.2s;
+    border: 3px solid transparent;
     position: relative;
     overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+    outline: 2px solid transparent;
 }
 
 .download-cv-btn::before {
@@ -323,14 +325,16 @@ html, body {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+    transition: left 0.5s cubic-bezier(.4,2,.6,1);
+    pointer-events: none;
 }
 
 .download-cv-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,255,231,0.4), 0 4px 12px rgba(255,0,234,0.4);
-    border-color: rgba(255,255,255,0.3);
+    transform: translateY(-4px) scale(1.04) rotate(-1deg);
+    box-shadow: 0 10px 32px 0 var(--accent), 0 0 48px 0 var(--accent2), 0 0 16px 0 var(--accent);
+    border-color: var(--accent2);
+    outline: 2.5px solid var(--accent);
 }
 
 .download-cv-btn:hover::before {
@@ -338,8 +342,22 @@ html, body {
 }
 
 .download-cv-btn:active {
-    transform: translateY(0);
+    transform: scale(0.98);
     box-shadow: 0 2px 8px rgba(0,255,231,0.3), 0 1px 4px rgba(255,0,234,0.3);
+    outline: 2.5px solid var(--accent2);
+}
+
+.download-cv-btn .download-icon {
+    font-size: 1.3em;
+    color: var(--accent2);
+    filter: drop-shadow(0 0 6px var(--accent));
+    margin-right: 0.2em;
+    transition: color 0.2s, filter 0.2s;
+}
+
+.download-cv-btn:hover .download-icon {
+    color: var(--accent);
+    filter: drop-shadow(0 0 10px var(--accent2));
 }
 
 .menu-toggle {
@@ -701,11 +719,18 @@ main {
 .modal-content {
     max-width: 90vw;
     max-height: 80vh;
-    border-radius: 16px;
-    border: 3px solid var(--accent);
-    box-shadow: 0 0 32px 0 var(--accent2);
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
     animation: modalPop 0.3s cubic-bezier(.4,2,.6,1);
     transition: opacity 0.3s ease, transform 0.3s ease;
+    outline: none;
+}
+
+#modal-img {
+    border: 5px solid var(--accent);
+    outline: none;
+    box-shadow: 0 0 32px 0 var(--accent);
 }
 
 .modal-content.changing {
@@ -735,42 +760,42 @@ main {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 2rem;
+    font-size: 4.5rem;
     color: var(--accent);
-    background: rgba(24,26,32,0.8);
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    width: 50px;
-    height: 50px;
+    background: none;
+    border: none;
+    width: auto;
+    height: auto;
     cursor: pointer;
     z-index: 101;
     transition: all 0.3s ease;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-shadow: 0 0 8px var(--accent);
-    line-height: 1;
-    margin: 0;
-    font-weight: bold;
-    vertical-align: middle;
-}
-
-.modal-nav-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 0;
-    height: 0;
+    text-shadow: 0 0 15px var(--accent);
+    font-weight: 900;
+    padding: 10px;
 }
 
 .modal-nav-btn:hover {
-    background: var(--accent2);
-    color: #fff;
-    border-color: var(--accent2);
-    text-shadow: 0 0 12px var(--accent2);
+    text-shadow: 0 0 25px var(--accent);
+    transform: translateY(-50%) scale(1.2);
+}
+
+.modal-nav-btn:active {
+    opacity: 0.7;
     transform: translateY(-50%) scale(1.1);
+}
+
+@media (max-width: 800px) {
+    .modal-nav-btn:hover {
+        transform: translateY(-50%) scale(1.1);
+    }
+    
+    .modal-prev-btn:hover {
+        transform: translateX(-60px) translateY(-50%) scale(1.1);
+    }
+    
+    .modal-next-btn:hover {
+        transform: translateX(60px) translateY(-50%) scale(1.1);
+    }
 }
 
 .modal-prev-btn {
@@ -781,32 +806,80 @@ main {
     right: 60px;
 }
 
-.modal-nav-btn::after {
-    content: '';
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
+
+
+@media (max-width: 800px) {
+    .modal-content {
+        max-width: 95vw;
+        max-height: 85vh;
+        margin: 1rem;
+        padding: 1rem;
+    }
+    
+    .modal-nav-btn {
+        font-size: 3.5rem;
+        top: calc(50% + 200px);
+        transform: translateY(-50%);
+        text-shadow: 0 0 15px var(--accent);
+        font-weight: 900;
+    }
+    
+    
+    
+    .modal-prev-btn {
+        left: 50%;
+        transform: translateX(-60px) translateY(-50%);
+    }
+    
+    .modal-next-btn {
+        right: 50%;
+        transform: translateX(60px) translateY(-50%);
+    }
+    
+    .close-modal {
+        top: 10px;
+        right: 10px;
+        font-size: 1.8rem;
+    }
 }
 
-@media (max-width: 700px) {
+@media (max-width: 600px) {
+    .modal-content {
+        max-width: 98vw;
+        max-height: 90vh;
+        margin: 0.5rem;
+        padding: 0.5rem;
+    }
+    
     .modal-nav-btn {
-        width: 45px;
-        height: 45px;
-        font-size: 1.5rem;
+        width: 40px;
+        height: 40px;
+        font-size: 1.3rem;
+        border-radius: 6px;
     }
-    .modal-prev-btn {
-        left: 10px;
-    }
-    .modal-next-btn {
-        right: 30px;
+    
+    .close-modal {
+        font-size: 1.6rem;
     }
 }
 
 @media (max-width: 500px) {
+    .modal-content {
+        max-width: 100vw;
+        max-height: 95vh;
+        margin: 0.25rem;
+        padding: 0.25rem;
+    }
+    
     .modal-nav-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+        width: 35px;
+        height: 35px;
+        font-size: 1.1rem;
+        border-radius: 4px;
+    }
+    
+    .close-modal {
+        font-size: 1.4rem;
     }
 }
 
@@ -1291,92 +1364,6 @@ main {
         max-width: 54px;
         max-height: 32px;
     }
-}
-
-.download-cv-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    background: linear-gradient(135deg, var(--accent), var(--accent2));
-    color: #000;
-    text-decoration: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: var(--radius);
-    font-family: var(--font-future);
-    font-weight: 600;
-    font-size: 1rem;
-    letter-spacing: 0.5px;
-    box-shadow: 0 4px 16px rgba(0,255,231,0.3), 0 2px 8px rgba(255,0,234,0.3);
-    transition: all 0.3s ease;
-    border: 2px solid transparent;
-    position: relative;
-    overflow: hidden;
-}
-
-.download-cv-btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-    transition: left 0.5s;
-}
-
-.download-cv-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,255,231,0.4), 0 4px 12px rgba(255,0,234,0.4);
-    border-color: rgba(255,255,255,0.3);
-}
-
-.download-cv-btn:hover::before {
-    left: 100%;
-}
-
-.download-cv-btn:active {
-    transform: translateY(0);
-    box-shadow: 0 2px 8px rgba(0,255,231,0.3), 0 1px 4px rgba(255,0,234,0.3);
-}
-
-.menu-toggle {
-    display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 25px;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    padding: 0;
-    z-index: 1000;
-    position: relative;
-}
-
-.menu-toggle .bar {
-    width: 100%;
-    height: 3px;
-    background: var(--accent);
-    border-radius: 2px;
-    transition: all 0.3s ease;
-    box-shadow: 0 0 4px var(--accent);
-}
-
-.menu-toggle:hover .bar {
-    background: var(--accent2);
-    box-shadow: 0 0 6px var(--accent2);
-}
-
-.menu-toggle.active .bar:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
-}
-
-.menu-toggle.active .bar:nth-child(2) {
-    opacity: 0;
-}
-
-.menu-toggle.active .bar:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
 }
 
 .cv-footer {
