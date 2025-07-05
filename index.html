@@ -3,87 +3,193 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Plamen Svetoslavov - Resume</title>
+    <title>Plamen Svetoslavov - AI Cyberpunk CV</title>
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
-<div class="container">
-
-    <section class="head">
-        <div class="name">
-            <div class="picture">
-                <img src="images/pic.jpg" alt="" style="width: 150px; border-radius: 10%">
-            </div>
-            <h1 id="name-1">Plamen Svetoslavov</h1>
-            <p id="name-2">Python Web Developer</p>
+    <div class="cyber-bg"></div>
+    <header class="cv-header">
+        <div class="profile-pic">
+            <img src="images/pic.jpg" alt="Plamen Svetoslavov">
         </div>
-
-        <div class="first-title">
-            <p>Always believe in yourself</p>
+        <div class="profile-info">
+            <h1>Plamen Svetoslavov</h1>
+            <h2>Python Web Developer</h2>
+            <p class="motto">Passionate and hardworking individual, focused on results and continuous growth</p>
         </div>
-        <div class="second-title">
-            <div class="left-side">
-                <p id="ls-1">svetoslavov.dev@gmail.com</p>
-                <p id="ls-2">Byala, Ruse, Bulgaria</p>
-                <p id="ls-3"><a href="https://www.linkedin.com/in/plamen-svetoslavov/" target="_blank">https://www.linkedin.com/in/plamen-svetoslavov/</a>
-                </p>
+    </header>
+    <nav class="cv-nav">
+        <button class="menu-toggle" aria-label="Toggle menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </button>
+        <ul class="nav-links">
+            <li><a href="#contacts">Contacts</a></li>
+            <li><a href="#personal-projects">Personal Projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#certificates">Certificates</a></li>
+        </ul>
+    </nav>
+    <main>
+        <section id="contacts" class="cv-section">
+            <h3>Contacts</h3>
+            <div class="contacts-grid">
+                <a href="mailto:svetoslavov.dev@gmail.com" class="contact-link"><img src="images/icons8-email-48.png" alt="Email"><span>svetoslavov.dev@gmail.com</span></a>
+                <a href="https://www.google.com/maps/place/Byala,+Ruse,+Bulgaria" target="_blank" class="contact-link"><img src="images/icons8-address-64.png" alt="Location"><span>Byala, Ruse, Bulgaria</span></a>
+                <a href="https://www.linkedin.com/in/plamen-svetoslavov/" target="_blank" class="contact-link"><img src="images/icons8-linkedin-100.png" alt="LinkedIn"><span>LinkedIn</span></a>
+                <a href="tel:+359883427273" class="contact-link"><img src="images/icons8-phone-100.png" alt="Phone"><span>(+359) 88 3 427 273</span></a>
+                <a href="https://svetoslavov.bg/" target="_blank" class="contact-link"><img src="images/icons8-website-48.png" alt="Website"><span>svetoslavov.bg</span></a>
+                <a href="https://github.com/plamensve" target="_blank" class="contact-link"><img src="images/icons8-github-64.png" alt="GitHub"><span>github.com/plamensve</span></a>
             </div>
-            <div class="right-side">
-                <p id="rs-1">(+359) 88 3 427 273</p>
-                <p id="rs-2"><a href="https://svetoslavov.bg/" target="_blank">https://svetoslavov.bg/</a></p>
-                <p id="rs-3"><a href="https://github.com/plamensve" target="_blank">github.com/plamensve</a></p>
+        </section>
+        <section id="personal-projects" class="cv-section">
+            <h3>Personal Projects</h3>
+            <div class="projects-gallery">
+                <a class="project-card" href="https://otonevrolog.bg/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?auto=format&fit=crop&w=400&q=80" alt="Otonevrolog.bg project preview" class="project-img">
+                    <div class="project-title">Otonevrolog.bg</div>
+                    <div class="project-desc">Medical informational website for otoneurology, providing resources and articles for patients and professionals.</div>
+                </a>
+                <a class="project-card" href="https://svetoslavov.bg/" target="_blank" rel="noopener noreferrer">
+                    <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Svetoslavov.bg project preview" class="project-img">
+                    <div class="project-title">Svetoslavov.bg</div>
+                    <div class="project-desc">Personal portfolio and blog, showcasing my work, skills, and professional journey as a Python web developer.</div>
+                </a>
+                <a class="project-card" href="https://github.com/plamensve/GTA_MANAGER_DJANGO_PROJECT" target="_blank" rel="noopener noreferrer">
+                    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="GTA Manager Django Project preview" class="project-img">
+                    <div class="project-title">GTA Manager Django Project</div>
+                    <div class="project-desc">A management platform for GTA Petroleum, built with Django. Features include user management, reporting, and business logic for petroleum operations.</div>
+                </a>
+                <a class="project-card" href="https://github.com/plamensve/RANDOM_FOREST_ALGORITHM" target="_blank" rel="noopener noreferrer">
+                    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Random Forest Algorithm project preview" class="project-img">
+                    <div class="project-title">Random Forest Algorithm</div>
+                    <div class="project-desc">Final project for Math Concepts for Developers course. Implements a Random Forest classifier for data analysis and visualization.</div>
+                </a>
             </div>
-        </div>
-    </section>
-
-    <section class="education-s">
-
-        <div class="s-1">
-            <div class="head-education">
-                <h2>Software engineer with Python</h2>
-                <h3>Software University</h3>
-            </div>
-            <details class="education">
-                <summary class="courses-info">Courses</summary>
-                <ul class="courses-title">
-                    <li data-image="images/certifications/django-advanced.jpg">Django Advanced</li>
-                    <li data-image="images/certifications/django-basics.jpg">Django Basics</li>
-                    <li data-image="images/certifications/orm.jpg">Python ORM</li>
-                    <li data-image="images/certifications/postgresql.jpg">PostgreSQL</li>
-                    <li data-image="images/certifications/oop.jpg">Python OOP</li>
-                    <li data-image="images/certifications/python-advanced.jpg">Python Advanced</li>
-                    <li data-image="images/certifications/html.jpg">HTML & CSS</li>
-                    <li data-image="images/certifications/js-front-end.jpg">JS Front-End</li>
-                    <li data-image="certificates/software-devops.jpg">Software Engineering and DevOps</li>
-                    <li data-image="certificates/cloud.jpg">Containers and Cloud</li>
-                </ul>
-            </details>
-            <!-- Място за показване на снимката -->
-            <div id="certificate-preview">
-                <div class="certificate-modal">
-                    <button id="close-preview">✖</button>
-                    <img id="certificate-image" src="" alt="Certificate">
+        </section>
+        <section id="education" class="cv-section">
+            <h3>Education</h3>
+            <div class="edu-block">
+                <h4>Software engineer with Python</h4>
+                <span>Software University</span>
+                <div class="courses-gallery">
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=400&q=80" alt="Programming Basics" class="course-img">
+                        <div class="course-title">Programming Basics</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1453928582365-b6ad33cbcf64?auto=format&fit=crop&w=400&q=80" alt="Programming Fundamentals" class="course-img">
+                        <div class="course-title">Programming Fundamentals</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=400&q=80" alt="Python Advanced" class="course-img">
+                        <div class="course-title">Python Advanced</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1516251193007-45ef944ab0c6?auto=format&fit=crop&w=400&q=80" alt="Python OOP" class="course-img">
+                        <div class="course-title">Python OOP</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1519125323398-675f0ddb6308?auto=format&fit=crop&w=400&q=80" alt="PostgreSQL" class="course-img">
+                        <div class="course-title">PostgreSQL</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1510915228340-29c85a43dcfe?auto=format&fit=crop&w=400&q=80" alt="Python ORM" class="course-img">
+                        <div class="course-title">Python ORM</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1465101046530-73398c7f28ca?auto=format&fit=crop&w=400&q=80" alt="Django Basics" class="course-img">
+                        <div class="course-title">Django Basics</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Django Advanced" class="course-img">
+                        <div class="course-title">Django Advanced</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="HTML & CSS" class="course-img">
+                        <div class="course-title">HTML & CSS</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="JS Front-End" class="course-img">
+                        <div class="course-title">JS Front-End</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=400&q=80" alt="Software Engineering and DevOps" class="course-img">
+                        <div class="course-title">Software Engineering and DevOps</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=400&q=80" alt="Containers and Cloud" class="course-img">
+                        <div class="course-title">Containers and Cloud</div>
+                        <div class="course-org">Software University</div>
+                    </div>
                 </div>
             </div>
-        </div>
-
-        <div class="s-2">
-            <div class="head-education">
-                <h2>AI and Machine Learning</h2>
-                <h3>Software University</h3>
+            <div class="edu-block">
+                <h4>AI and Machine Learning</h4>
+                <span>Software University</span>
+                <div class="courses-gallery">
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=400&q=80" alt="Math Concepts for Developers" class="course-img">
+                        <div class="course-title">Math Concepts for Developers</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=400&q=80" alt="Data Science" class="course-img">
+                        <div class="course-title">Data Science</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=400&q=80" alt="Machine Learning" class="course-img">
+                        <div class="course-title">Machine Learning</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                    <div class="course-card">
+                        <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=400&q=80" alt="Deep Learning" class="course-img">
+                        <div class="course-title">Deep Learning</div>
+                        <div class="course-org">Software University</div>
+                    </div>
+                </div>
             </div>
-            <details class="education">
-                <summary class="courses-info">Courses</summary>
-                <ul class="courses-title">
-                    <li data-image="images/certifications/">Math Concepts for Developers</li>
-                    <li data-image="images/certifications/">Data Science</li>
-                    <li data-image="images/certifications/">Machine Learning</li>
-                    <li data-image="images/certifications/">Deep Learning</li>
-                </ul>
-            </details>
-        </div>
-    </section>
-</div>
-<script src="scripts/cert.js"></script>
+        </section>
+        <section id="certificates" class="cv-section">
+            <h3>Certificates</h3>
+            <div class="certificates-gallery">
+                dsada
+                <img src="images/certifications/programming_basics.jpeg" alt="Programming Basics" class="cert-card-img">
+                <img src="images/certifications/programming_fundamentals.jpeg" alt="Programming Fundamentals" class="cert-card-img">
+                <img src="images/certifications/python-advanced.jpg" alt="Python Advanced" class="cert-card-img">
+                <img src="images/certifications/oop.jpg" alt="Python OOP" class="cert-card-img">
+                <img src="images/certifications/postgresql.jpg" alt="PostgreSQL" class="cert-card-img">
+                <img src="images/certifications/orm.jpg" alt="Python ORM" class="cert-card-img">
+                <img src="images/certifications/django-basics.jpg" alt="Django Basics" class="cert-card-img">
+                <img src="images/certifications/django-advanced.jpg" alt="Django Advanced" class="cert-card-img">
+                <img src="images/certifications/html.jpg" alt="HTML & CSS" class="cert-card-img">
+                <img src="images/certifications/js-front-end.jpg" alt="JS Front-End" class="cert-card-img">
+                <img src="images/certifications/devops_1.jpeg" alt="Software Engineering and DevOps" class="cert-card-img">
+            </div>
+            <div id="certificate-modal" class="modal hidden">
+                <span class="close-modal">&times;</span>
+                <img class="modal-content" id="modal-img" src="" alt="Certificate Preview">
+            </div>
+        </section>
+    </main>
+    <footer class="cv-footer">
+        <p>&copy; 2025 Plamen Svetoslavov</p>
+    </footer>
+    <button class="scroll-top-btn" aria-label="Scroll to top">&#8679;</button>
+    <script src="scripts/cert.js"></script>
 </body>
 </html>
