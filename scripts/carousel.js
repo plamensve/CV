@@ -1,6 +1,9 @@
 (function() {
+    let currentCertIndex = 0;
+    let allCertificates = [];
+    
     function updateActiveCards(carousel) {
-        const track = carousel.querySelector('.courses-track');
+        const track = carousel.querySelector('.courses-track, .certificates-track, .projects-track');
         const cards = Array.from(track.children);
         const carouselRect = carousel.getBoundingClientRect();
         let minDist = Infinity, activeIdx = 0;
@@ -21,8 +24,86 @@
             else if (i === activeIdx + 1) card.classList.add('next');
         });
     }
-    document.querySelectorAll('.courses-carousel').forEach(carousel => {
-        const track = carousel.querySelector('.courses-track');
+    
+    function updateModalNavigation() {
+        const prevBtn = document.querySelector('.modal-prev-btn');
+        const nextBtn = document.querySelector('.modal-next-btn');
+        
+        // Always show both buttons for circular navigation
+        if (prevBtn) prevBtn.style.display = 'flex';
+        if (nextBtn) nextBtn.style.display = 'flex';
+    }
+    
+    function showCertificate(index) {
+        if (index >= 0 && index < allCertificates.length) {
+            const modalImg = document.getElementById('modal-img');
+            if (modalImg) {
+                // Add changing effect
+                modalImg.classList.add('changing');
+                
+                setTimeout(() => {
+                    currentCertIndex = index;
+                    modalImg.src = allCertificates[index].src;
+                    modalImg.alt = allCertificates[index].alt;
+                    
+                    // Remove changing effect after image loads
+                    setTimeout(() => {
+                        modalImg.classList.remove('changing');
+                    }, 100);
+                }, 150);
+            }
+            updateModalNavigation();
+        }
+    }
+    
+    function showNextCertificate() {
+        const nextIndex = (currentCertIndex + 1) % allCertificates.length;
+        showCertificate(nextIndex);
+    }
+    
+    function showPrevCertificate() {
+        const prevIndex = currentCertIndex === 0 ? allCertificates.length - 1 : currentCertIndex - 1;
+        showCertificate(prevIndex);
+    }
+    
+    // Initialize certificate navigation
+    document.addEventListener('DOMContentLoaded', function() {
+        const certCards = document.querySelectorAll('.certificates-carousel .cert-card');
+        allCertificates = Array.from(certCards).map(card => {
+            const img = card.querySelector('.cert-img');
+            return {
+                src: img ? img.src : '',
+                alt: img ? img.alt : ''
+            };
+        });
+        
+        // Add event listeners for modal navigation
+        const prevBtn = document.querySelector('.modal-prev-btn');
+        const nextBtn = document.querySelector('.modal-next-btn');
+        
+        if (prevBtn) {
+            prevBtn.addEventListener('click', showPrevCertificate);
+        }
+        
+        if (nextBtn) {
+            nextBtn.addEventListener('click', showNextCertificate);
+        }
+        
+        // Add keyboard navigation
+        document.addEventListener('keydown', function(e) {
+            const modal = document.getElementById('certificate-modal');
+            if (!modal || modal.classList.contains('hidden')) return;
+            
+            if (e.key === 'ArrowLeft') {
+                showPrevCertificate();
+            } else if (e.key === 'ArrowRight') {
+                showNextCertificate();
+            }
+        });
+    });
+    
+    document.querySelectorAll('.courses-carousel, .certificates-carousel, .projects-carousel').forEach(carousel => {
+        const track = carousel.querySelector('.courses-track, .certificates-track, .projects-track');
         if (!track) return;
         let ticking = false;
         function onScroll() {
@@ -39,8 +120,9 @@
         // Snap to card on load
         setTimeout(() => updateActiveCards(carousel), 100);
         // Scroll to center on card click
-        track.querySelectorAll('.course-card').forEach(card => {
+        track.querySelectorAll('.course-card, .cert-card, .project-card').forEach((card, index) => {
             card.addEventListener('click', function(e) {
+                // Scroll to center for all cards in projects-carousel
                 const carouselRect = carousel.getBoundingClientRect();
                 const cardRect = card.getBoundingClientRect();
                 const scrollLeft = carousel.scrollLeft;
