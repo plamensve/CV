@@ -136,4 +136,39 @@
             });
         });
     });
+
+    // --- Mobile menu (hamburger) ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const menuToggle = document.querySelector('.menu-toggle');
+        const nav = document.querySelector('.cv-nav');
+        const navLinks = document.querySelector('.nav-links');
+        if (menuToggle && nav && navLinks) {
+            menuToggle.addEventListener('click', function() {
+                nav.classList.toggle('open');
+            });
+            // Close menu on link click (mobile UX)
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    nav.classList.remove('open');
+                });
+            });
+        }
+    });
+
+    // --- Scroll-to-top button ---
+    document.addEventListener('DOMContentLoaded', function() {
+        const scrollBtn = document.querySelector('.scroll-top-btn');
+        if (!scrollBtn) return;
+        function toggleScrollBtn() {
+            if (window.scrollY > 200) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        }
+        window.addEventListener('scroll', toggleScrollBtn);
+        scrollBtn.addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    });
 })(); 

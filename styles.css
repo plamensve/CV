@@ -964,16 +964,25 @@ main {
 }
 
 .menu-toggle {
-    display: none;
+    display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     background: none;
     border: none;
     cursor: pointer;
     z-index: 20;
+    border-radius: 50%;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 0 0 0 transparent;
+    outline: none;
+    position: relative;
+}
+.menu-toggle:focus, .menu-toggle:hover {
+    background: var(--accent2);
+    box-shadow: 0 0 12px var(--accent2);
 }
 .menu-toggle .bar {
     width: 28px;
@@ -982,6 +991,23 @@ main {
     margin: 3px 0;
     border-radius: 2px;
     transition: 0.3s;
+}
+.cv-nav.open .menu-toggle .bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+.cv-nav.open .menu-toggle .bar:nth-child(2) {
+    opacity: 0;
+}
+.cv-nav.open .menu-toggle .bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+.cv-nav ul.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    transition: max-height 0.3s, opacity 0.3s;
 }
 @media (max-width: 700px) {
     .cv-nav ul.nav-links {
@@ -996,9 +1022,20 @@ main {
         z-index: 10;
         padding: 1rem 0;
         margin: 0;
+        opacity: 0;
+        max-height: 0;
+        pointer-events: none;
     }
     .cv-nav.open ul.nav-links {
         display: flex;
+        opacity: 1;
+        max-height: 400px;
+        pointer-events: auto;
+        animation: fadeInMenu 0.3s;
+    }
+    @keyframes fadeInMenu {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     .menu-toggle {
         display: flex;
@@ -1012,42 +1049,51 @@ main {
     position: fixed;
     right: 24px;
     bottom: 32px;
-    width: 48px;
-    height: 48px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background: var(--accent2);
+    background: linear-gradient(135deg, var(--accent2), var(--accent));
     color: #fff;
     border: none;
-    font-size: 2rem;
+    font-size: 2.2rem;
     box-shadow: 0 0 16px var(--accent2), 0 0 4px var(--accent);
     cursor: pointer;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.3s, background 0.2s, box-shadow 0.2s;
+    transition: opacity 0.3s, background 0.2s, box-shadow 0.2s, transform 0.2s;
     z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    outline: none;
+}
+.scroll-top-btn.show {
+    opacity: 1;
+    pointer-events: auto;
+    transform: scale(1.08);
+}
+.scroll-top-btn:hover {
+    background: linear-gradient(135deg, var(--accent), var(--accent2));
+    box-shadow: 0 0 32px var(--accent), 0 0 8px var(--accent2);
+    transform: scale(1.15);
 }
 @media (max-width: 900px) {
     .scroll-top-btn {
-        right: 8px;
-        bottom: 16px;
+        right: 12px;
+        bottom: 18px;
+        width: 44px;
+        height: 44px;
+        font-size: 1.5rem;
     }
 }
 @media (max-width: 500px) {
     .scroll-top-btn {
         width: 36px;
         height: 36px;
-        font-size: 1.3rem;
+        font-size: 1.1rem;
         right: 1vw;
         bottom: 1vh;
     }
-}
-.scroll-top-btn.show {
-    opacity: 1;
-    pointer-events: auto;
-}
-.scroll-top-btn:hover {
-    background: var(--accent);
-    box-shadow: 0 0 32px var(--accent), 0 0 8px var(--accent2);
 }
 
 
