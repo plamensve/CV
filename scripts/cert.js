@@ -1,61 +1,24 @@
-// Списък с курсове и съответните имена на файловете
-const certificates = [
-    { title: 'Programming Basics', file: 'programming_basics.jpeg' },
-    { title: 'Programming Fundamentals', file: 'programming_fundamentals.jpeg' },
-    { title: 'Python Advanced', file: 'python-advanced.jpg' },
-    { title: 'Python OOP', file: 'oop.jpg' },
-    { title: 'PostgreSQL', file: 'postgresql.jpg' },
-    { title: 'Python ORM', file: 'orm.jpg' },
-    { title: 'Django Basics', file: 'django-basics.jpg' },
-    { title: 'Django Advanced', file: 'django-advanced.jpg' },
-    { title: 'HTML & CSS', file: 'html.jpg' },
-    { title: 'JS Front-End', file: 'js-front-end.jpg' },
-    { title: 'Software Engineering and DevOps', file: 'devops_1.jpeg' }
-];
+// Certificate modal functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('certificate-modal');
+    const modalImg = document.getElementById('modal-img');
+    const closeModal = document.querySelector('.close-modal');
+    const prevBtn = document.querySelector('.modal-prev-btn');
+    const nextBtn = document.querySelector('.modal-next-btn');
+    
+    let currentCertIndex = 0;
+    let allCertificates = [];
 
-const gallery = document.querySelector('.certificates-gallery');
-const modal = document.getElementById('certificate-modal');
-const modalImg = document.getElementById('modal-img');
-const closeModal = document.querySelector('.close-modal');
-
-function createCertCard(cert) {
-    const card = document.createElement('div');
-    card.className = 'cert-card';
-    card.tabIndex = 0;
-    card.setAttribute('role', 'button');
-    card.setAttribute('aria-label', cert.title);
-
-    const img = document.createElement('img');
-    img.src = `images/certifications/${cert.file}`;
-    img.alt = cert.title;
-    img.loading = 'lazy';
-
-    const title = document.createElement('div');
-    title.className = 'cert-title';
-    title.textContent = cert.title;
-
-    const org = document.createElement('div');
-    org.className = 'cert-org';
-    org.textContent = 'Software University';
-
-    card.appendChild(img);
-    card.appendChild(title);
-    card.appendChild(org);
-
-    card.addEventListener('click', () => openModal(img.src, cert.title));
-    card.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') openModal(img.src, cert.title);
-    });
-    return card;
-}
-
-function openModal(src, alt) {
-    modal.classList.remove('hidden');
-    modalImg.src = src;
-    modalImg.alt = alt;
-    setTimeout(() => {
-        modal.style.opacity = 1;
-    }, 10);
+function openModal(index) {
+    if (index >= 0 && index < allCertificates.length) {
+        currentCertIndex = index;
+        modal.classList.remove('hidden');
+        modalImg.src = allCertificates[index].src;
+        modalImg.alt = allCertificates[index].alt;
+        setTimeout(() => {
+            modal.style.opacity = 1;
+        }, 10);
+    }
 }
 
 function closeModalFunc() {
@@ -66,58 +29,137 @@ function closeModalFunc() {
     }, 200);
 }
 
-closeModal.addEventListener('click', closeModalFunc);
-modal.addEventListener('click', (e) => {
-    if (e.target === modal) closeModalFunc();
+function showNextCertificate() {
+    const nextIndex = (currentCertIndex + 1) % allCertificates.length;
+    showCertificate(nextIndex);
+}
+
+function showPrevCertificate() {
+    const prevIndex = currentCertIndex === 0 ? allCertificates.length - 1 : currentCertIndex - 1;
+    showCertificate(prevIndex);
+}
+
+function showCertificate(index) {
+    if (index >= 0 && index < allCertificates.length) {
+        // Add changing effect
+        modalImg.classList.add('changing');
+        
+        setTimeout(() => {
+            currentCertIndex = index;
+            modalImg.src = allCertificates[index].src;
+            modalImg.alt = allCertificates[index].alt;
+            
+            // Remove changing effect after image loads
+            setTimeout(() => {
+                modalImg.classList.remove('changing');
+            }, 100);
+        }, 150);
+    }
+}
+
+// Initialize certificates array
+const certCards = document.querySelectorAll('.certificates-carousel .cert-card');
+allCertificates = Array.from(certCards).map(card => {
+    const img = card.querySelector('.cert-img');
+    return {
+        src: img ? img.src : '',
+        alt: img ? img.alt : '',
+        title: card.querySelector('.cert-title') ? card.querySelector('.cert-title').textContent : ''
+    };
 });
 
-gallery.innerHTML = '';
-certificates.forEach(cert => {
-    gallery.appendChild(createCertCard(cert));
-});
-
-// Анимация за модалния прозорец
-modal.style.transition = 'opacity 0.2s';
-modal.style.opacity = 0;
-
-// Project cards click handler
-
-document.querySelectorAll('.project-card').forEach(card => {
-    card.tabIndex = 0;
-    card.setAttribute('role', 'button');
-    card.addEventListener('click', function(e) {
-        // Защита: само ляв бутон и без drag
-        if (e.button !== 0) return;
-        const href = card.getAttribute('data-href');
-        if (href) window.open(href, '_blank', 'noopener');
-    });
-    card.addEventListener('keypress', function(e) {
+// Add click event listeners to certificate cards
+certCards.forEach((card, index) => {
+    card.addEventListener('click', () => openModal(index));
+    card.addEventListener('keypress', (e) => {
         if (e.key === 'Enter' || e.key === ' ') {
-            const href = card.getAttribute('data-href');
-            if (href) window.open(href, '_blank', 'noopener');
+            openModal(index);
         }
+    });
+});
+
+// Modal event listeners
+if (closeModal) {
+    closeModal.addEventListener('click', closeModalFunc);
+}
+
+if (modal) {
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) closeModalFunc();
+    });
+}
+
+// Navigation buttons
+if (prevBtn) {
+    prevBtn.addEventListener('click', showPrevCertificate);
+}
+
+if (nextBtn) {
+    nextBtn.addEventListener('click', showNextCertificate);
+}
+
+// Keyboard navigation
+document.addEventListener('keydown', function(e) {
+    if (!modal || modal.classList.contains('hidden')) return;
+    
+    if (e.key === 'Escape') {
+        closeModalFunc();
+    } else if (e.key === 'ArrowLeft') {
+        showPrevCertificate();
+    } else if (e.key === 'ArrowRight') {
+        showNextCertificate();
+    }
+});
+
+// Set modal transition
+if (modal) {
+    modal.style.transition = 'opacity 0.2s';
+    modal.style.opacity = 0;
+}
+});
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.project-card').forEach(card => {
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.addEventListener('click', function(e) {
+            // Защита: само ляв бутон и без drag
+            if (e.button !== 0) return;
+            const href = card.getAttribute('href');
+            if (href) window.open(href, '_blank', 'noopener');
+        });
+        card.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+                const href = card.getAttribute('href');
+                if (href) window.open(href, '_blank', 'noopener');
+            }
+        });
     });
 });
 
 // Hamburger menu logic
-const menuToggle = document.querySelector('.menu-toggle');
-const nav = document.querySelector('.cv-nav');
-const navLinks = document.querySelector('.nav-links');
+document.addEventListener('DOMContentLoaded', function() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.cv-nav');
+    const navLinks = document.querySelector('.nav-links');
 
-if (menuToggle && nav && navLinks) {
-    menuToggle.addEventListener('click', () => {
-        nav.classList.toggle('open');
-    });
-    navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-            nav.classList.remove('open');
+    if (menuToggle && nav && navLinks) {
+        menuToggle.addEventListener('click', () => {
+            nav.classList.toggle('open');
+            menuToggle.classList.toggle('active');
         });
-    });
-    document.addEventListener('click', (e) => {
-        if (!nav.contains(e.target) && nav.classList.contains('open')) {
-            nav.classList.remove('open');
-        }
-    });
-}
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                nav.classList.remove('open');
+                menuToggle.classList.remove('active');
+            });
+        });
+        document.addEventListener('click', (e) => {
+            if (!nav.contains(e.target) && nav.classList.contains('open')) {
+                nav.classList.remove('open');
+                menuToggle.classList.remove('active');
+            }
+        });
+    }
+});
 
 

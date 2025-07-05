@@ -738,13 +738,13 @@ main {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    font-size: 8rem;
+    font-size: 2rem;
     color: var(--accent);
     background: rgba(24,26,32,0.8);
     border: 2px solid var(--accent);
     border-radius: 50%;
-    width: 60px;
-    height: 60px;
+    width: 50px;
+    height: 50px;
     cursor: pointer;
     z-index: 101;
     transition: all 0.3s ease;
@@ -753,10 +753,9 @@ main {
     justify-content: center;
     text-shadow: 0 0 8px var(--accent);
     line-height: 1;
-    padding-top: 9px;
     margin: 0;
     font-weight: bold;
-    padding-top: 2px;
+    vertical-align: middle;
 }
 
 .modal-nav-btn::before {
@@ -778,24 +777,31 @@ main {
 }
 
 .modal-prev-btn {
-    left: 2vw;
+    left: 20px;
 }
 
 .modal-next-btn {
-    right: 2vw;
+    right: 60px;
+}
+
+.modal-nav-btn::after {
+    content: '';
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
 }
 
 @media (max-width: 700px) {
     .modal-nav-btn {
-        width: 50px;
-        height: 50px;
-        font-size: 2rem;
+        width: 45px;
+        height: 45px;
+        font-size: 1.5rem;
     }
     .modal-prev-btn {
-        left: 1vw;
+        left: 10px;
     }
     .modal-next-btn {
-        right: 1vw;
+        right: 30px;
     }
 }
 
@@ -803,7 +809,7 @@ main {
     .modal-nav-btn {
         width: 40px;
         height: 40px;
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 }
 
@@ -991,12 +997,7 @@ main {
     transition: box-shadow 0.25s, border-color 0.25s, background 0.25s;
 }
 
-#certificates.cv-section:hover {
-    box-shadow: none;
-    border-color: var(--accent);
-    background: var(--bg-secondary);
-    transition: none;
-}
+
 
 .cert-card:hover, .course-card:hover {
     cursor: pointer;
