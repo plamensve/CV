@@ -137,23 +137,7 @@
         });
     });
 
-    // --- Mobile menu (hamburger) ---
-    document.addEventListener('DOMContentLoaded', function() {
-        const menuToggle = document.querySelector('.menu-toggle');
-        const nav = document.querySelector('.cv-nav');
-        const navLinks = document.querySelector('.nav-links');
-        if (menuToggle && nav && navLinks) {
-            menuToggle.addEventListener('click', function() {
-                nav.classList.toggle('open');
-            });
-            // Close menu on link click (mobile UX)
-            navLinks.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('open');
-                });
-            });
-        }
-    });
+
 
 
 })(); 

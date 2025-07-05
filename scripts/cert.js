@@ -1,5 +1,6 @@
-// Certificate modal functionality
+// All functionality in one DOMContentLoaded event listener
 document.addEventListener('DOMContentLoaded', function() {
+    // Certificate modal functionality
     const modal = document.getElementById('certificate-modal');
     const modalImg = document.getElementById('modal-img');
     const closeModal = document.querySelector('.close-modal');
@@ -9,115 +10,115 @@ document.addEventListener('DOMContentLoaded', function() {
     let currentCertIndex = 0;
     let allCertificates = [];
 
-function openModal(index) {
-    if (index >= 0 && index < allCertificates.length) {
-        currentCertIndex = index;
-        modal.classList.remove('hidden');
-        modalImg.src = allCertificates[index].src;
-        modalImg.alt = allCertificates[index].alt;
-        setTimeout(() => {
-            modal.style.opacity = 1;
-        }, 10);
-    }
-}
-
-function closeModalFunc() {
-    modal.style.opacity = 0;
-    setTimeout(() => {
-        modal.classList.add('hidden');
-        modalImg.src = '';
-    }, 200);
-}
-
-function showNextCertificate() {
-    const nextIndex = (currentCertIndex + 1) % allCertificates.length;
-    showCertificate(nextIndex);
-}
-
-function showPrevCertificate() {
-    const prevIndex = currentCertIndex === 0 ? allCertificates.length - 1 : currentCertIndex - 1;
-    showCertificate(prevIndex);
-}
-
-function showCertificate(index) {
-    if (index >= 0 && index < allCertificates.length) {
-        // Add changing effect
-        modalImg.classList.add('changing');
-        
-        setTimeout(() => {
+    function openModal(index) {
+        if (index >= 0 && index < allCertificates.length) {
             currentCertIndex = index;
+            modal.classList.remove('hidden');
             modalImg.src = allCertificates[index].src;
             modalImg.alt = allCertificates[index].alt;
-            
-            // Remove changing effect after image loads
             setTimeout(() => {
-                modalImg.classList.remove('changing');
-            }, 100);
-        }, 150);
+                modal.style.opacity = 1;
+            }, 10);
+        }
     }
-}
 
-// Initialize certificates array
-const certCards = document.querySelectorAll('.certificates-carousel .cert-card');
-allCertificates = Array.from(certCards).map(card => {
-    const img = card.querySelector('.cert-img');
-    return {
-        src: img ? img.src : '',
-        alt: img ? img.alt : '',
-        title: card.querySelector('.cert-title') ? card.querySelector('.cert-title').textContent : ''
-    };
-});
+    function closeModalFunc() {
+        modal.style.opacity = 0;
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modalImg.src = '';
+        }, 200);
+    }
 
-// Add click event listeners to certificate cards
-certCards.forEach((card, index) => {
-    card.addEventListener('click', () => openModal(index));
-    card.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-            openModal(index);
+    function showNextCertificate() {
+        const nextIndex = (currentCertIndex + 1) % allCertificates.length;
+        showCertificate(nextIndex);
+    }
+
+    function showPrevCertificate() {
+        const prevIndex = currentCertIndex === 0 ? allCertificates.length - 1 : currentCertIndex - 1;
+        showCertificate(prevIndex);
+    }
+
+    function showCertificate(index) {
+        if (index >= 0 && index < allCertificates.length) {
+            // Add changing effect
+            modalImg.classList.add('changing');
+            
+            setTimeout(() => {
+                currentCertIndex = index;
+                modalImg.src = allCertificates[index].src;
+                modalImg.alt = allCertificates[index].alt;
+                
+                // Remove changing effect after image loads
+                setTimeout(() => {
+                    modalImg.classList.remove('changing');
+                }, 100);
+            }, 150);
+        }
+    }
+
+    // Initialize certificates array
+    const certCards = document.querySelectorAll('.certificates-carousel .cert-card');
+    allCertificates = Array.from(certCards).map(card => {
+        const img = card.querySelector('.cert-img');
+        return {
+            src: img ? img.src : '',
+            alt: img ? img.alt : '',
+            title: card.querySelector('.cert-title') ? card.querySelector('.cert-title').textContent : ''
+        };
+    });
+
+    // Add click event listeners to certificate cards
+    certCards.forEach((card, index) => {
+        card.addEventListener('click', () => openModal(index));
+        card.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                openModal(index);
+            }
+        });
+    });
+
+    // Modal event listeners
+    if (closeModal) {
+        closeModal.addEventListener('click', closeModalFunc);
+    }
+
+    if (modal) {
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModalFunc();
+        });
+    }
+
+    // Navigation buttons
+    if (prevBtn) {
+        prevBtn.addEventListener('click', showPrevCertificate);
+    }
+
+    if (nextBtn) {
+        nextBtn.addEventListener('click', showNextCertificate);
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', function(e) {
+        if (!modal || modal.classList.contains('hidden')) return;
+        
+        if (e.key === 'Escape') {
+            closeModalFunc();
+        } else if (e.key === 'ArrowLeft') {
+            showPrevCertificate();
+        } else if (e.key === 'ArrowRight') {
+            showNextCertificate();
         }
     });
-});
 
-// Modal event listeners
-if (closeModal) {
-    closeModal.addEventListener('click', closeModalFunc);
-}
-
-if (modal) {
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModalFunc();
-    });
-}
-
-// Navigation buttons
-if (prevBtn) {
-    prevBtn.addEventListener('click', showPrevCertificate);
-}
-
-if (nextBtn) {
-    nextBtn.addEventListener('click', showNextCertificate);
-}
-
-// Keyboard navigation
-document.addEventListener('keydown', function(e) {
-    if (!modal || modal.classList.contains('hidden')) return;
-    
-    if (e.key === 'Escape') {
-        closeModalFunc();
-    } else if (e.key === 'ArrowLeft') {
-        showPrevCertificate();
-    } else if (e.key === 'ArrowRight') {
-        showNextCertificate();
+    // Set modal transition
+    if (modal) {
+        modal.style.transition = 'opacity 0.2s';
+        modal.style.opacity = 0;
     }
-});
 
-// Set modal transition
-if (modal) {
-    modal.style.transition = 'opacity 0.2s';
-    modal.style.opacity = 0;
-}
-});
-document.addEventListener('DOMContentLoaded', function() {
+    // Project cards click handler
     document.querySelectorAll('.project-card').forEach(card => {
         card.tabIndex = 0;
         card.setAttribute('role', 'button');
@@ -134,31 +135,38 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-});
 
-// Hamburger menu logic
-document.addEventListener('DOMContentLoaded', function() {
+    // Hamburger menu logic
     const menuToggle = document.querySelector('.menu-toggle');
     const nav = document.querySelector('.cv-nav');
     const navLinks = document.querySelector('.nav-links');
 
+    console.log('Menu elements:', { menuToggle, nav, navLinks }); // Debug log
+
     if (menuToggle && nav && navLinks) {
-        menuToggle.addEventListener('click', () => {
+        menuToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+            console.log('Menu toggle clicked'); // Debug log
             nav.classList.toggle('open');
             menuToggle.classList.toggle('active');
         });
+        
         navLinks.querySelectorAll('a').forEach(link => {
             link.addEventListener('click', () => {
                 nav.classList.remove('open');
                 menuToggle.classList.remove('active');
             });
         });
+        
         document.addEventListener('click', (e) => {
             if (!nav.contains(e.target) && nav.classList.contains('open')) {
                 nav.classList.remove('open');
                 menuToggle.classList.remove('active');
             }
         });
+    } else {
+        console.log('Menu elements not found:', { menuToggle, nav, navLinks }); // Debug log
     }
 });
 
