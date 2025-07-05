@@ -413,7 +413,7 @@ html, body {
 }
 
 main {
-    max-width: 900px;
+    max-width: 1000px;
     margin: 0 auto;
     z-index: 1;
     position: relative;
@@ -442,13 +442,9 @@ main {
 #contacts.cv-section {
     position: relative;
     z-index: 10;
-    padding: 1rem 0.5rem;
 }
 
-#contacts.cv-section > * {
-    padding-left: 0;
-    padding-right: 0;
-}
+
 .cv-section::before {
     content: '';
     position: absolute;
