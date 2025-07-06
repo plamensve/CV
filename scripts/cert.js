@@ -4,8 +4,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const modal = document.getElementById('certificate-modal');
     const modalImg = document.getElementById('modal-img');
     const closeModal = document.querySelector('.close-modal');
-    const prevBtn = document.querySelector('.modal-prev-btn');
-    const nextBtn = document.querySelector('.modal-next-btn');
     
     let currentCertIndex = 0;
     let allCertificates = [];
@@ -30,33 +28,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }, 200);
     }
 
-    function showNextCertificate() {
-        const nextIndex = (currentCertIndex + 1) % allCertificates.length;
-        showCertificate(nextIndex);
-    }
 
-    function showPrevCertificate() {
-        const prevIndex = currentCertIndex === 0 ? allCertificates.length - 1 : currentCertIndex - 1;
-        showCertificate(prevIndex);
-    }
-
-    function showCertificate(index) {
-        if (index >= 0 && index < allCertificates.length) {
-            // Add changing effect
-            modalImg.classList.add('changing');
-            
-            setTimeout(() => {
-                currentCertIndex = index;
-                modalImg.src = allCertificates[index].src;
-                modalImg.alt = allCertificates[index].alt;
-                
-                // Remove changing effect after image loads
-                setTimeout(() => {
-                    modalImg.classList.remove('changing');
-                }, 100);
-            }, 150);
-        }
-    }
 
     // Initialize certificates array
     const certCards = document.querySelectorAll('.certificates-carousel .cert-card');
@@ -90,14 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Navigation buttons
-    if (prevBtn) {
-        prevBtn.addEventListener('click', showPrevCertificate);
-    }
 
-    if (nextBtn) {
-        nextBtn.addEventListener('click', showNextCertificate);
-    }
 
     // Keyboard navigation
     document.addEventListener('keydown', function(e) {
@@ -105,10 +70,6 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (e.key === 'Escape') {
             closeModalFunc();
-        } else if (e.key === 'ArrowLeft') {
-            showPrevCertificate();
-        } else if (e.key === 'ArrowRight') {
-            showNextCertificate();
         }
     });
 
