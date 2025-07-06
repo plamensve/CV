@@ -1127,6 +1127,7 @@ main {
     }
 }
 
+#contacts.cv-section:hover,
 #personal-projects.cv-section:hover,
 #education.cv-section:hover,
 #certificates.cv-section:hover {
@@ -1134,6 +1135,7 @@ main {
     border-color: var(--accent2);
     background: linear-gradient(120deg, rgba(0,255,231,0.18) 0%, rgba(255,0,234,0.13) 100%), var(--bg-secondary);
     transition: box-shadow 0.25s, border-color 0.25s, background 0.25s;
+    cursor: pointer;
 }
 
 
